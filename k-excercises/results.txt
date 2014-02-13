@@ -1,0 +1,63 @@
+Ann
+	Votes:  13
+
+Ben
+	Votes:  9
+
+Bob
+	Votes:  12
+
+Guy
+	Votes:  4
+
+Joe
+	Votes:  6
+
+Jon
+	Votes:  10
+
+Maximilian
+	Votes:  14
+
+Pat
+	Votes:  11
+
+Rob
+	Votes:  14
+
+Sue
+	Votes:  7
+
+
+--------------------------------------------
+
+Maximilian
+	Votes:  14
+
+Rob
+	Votes:  14
+
+Ann
+	Votes:  13
+
+Bob
+	Votes:  12
+
+Pat
+	Votes:  11
+
+Jon
+	Votes:  10
+
+Ben
+	Votes:  9
+
+Sue
+	Votes:  7
+
+Joe
+	Votes:  6
+
+Guy
+	Votes:  4
+
