@@ -17,6 +17,9 @@ void append(Node *node, Node **head, Node **tail);
 int count(Node *head);
 int pop(Node **head);
 void printNodes(Node *head);
+int min(Node *head);
+int max(Node *head);
+int sum(Node *head);
 
 
 int main(void) {
@@ -54,6 +57,8 @@ int main(void) {
 
     printNodes(head);
     printf("\nThere are %d Nodes in this linked list.\n\n", count(head));
+
+    printf("Min:\t%d\nMax:\t%d\nSum:\t%d\n", min(head), max(head, sum(head)));
 
     return 0;
 }
@@ -118,7 +123,7 @@ int count(Node *head) {
 
 
 int pop(Node **head) {
-    int val =  (*head) -> data;
+    int val =  (*head) -> data; // will error out if empty list ~ don't care
     *head = (*head) -> next;
     
     return val;
@@ -132,4 +137,48 @@ void printNodes(Node *head) {
         printf("%d\n", ptr -> data);
         ptr = ptr -> next;
     }
+}
+
+
+int min(Node *head) {
+    Node *ptr = head;
+    int min;
+    min = head -> data; // will error out if empty list ~ don't care
+
+    while((ptr = ptr -> next) != NULL){
+        if(ptr -> data < min) {
+            min = ptr -> data;
+        }
+    }
+
+    return min;
+}
+
+
+int max(Node *head) {
+    Node *ptr = head;
+    int max;
+    max = head -> data; // will error out if empty list ~ don't care
+
+    while((ptr = ptr -> next) != NULL){
+        if(ptr -> data > max) {
+            max = ptr -> data;
+        }
+    }
+
+    
+    return max;
+}
+
+
+int sum(Node *head) {
+    Node *ptr = head;
+    int sum = 0;
+    
+    while(ptr != NULL) {
+        sum += ptr -> data;
+        ptr = ptr -> next;
+    }
+
+    return sum;
 }
