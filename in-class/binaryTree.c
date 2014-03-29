@@ -1,34 +1,38 @@
 // duplicate values for nodes ignored
 
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
+#include <time.h>
 
 typedef struct node {
-    int value;
-    node *left, *right;
+    int data;
+    struct node *left, *right;
 } Node;
 
-void insert(int value, Node **head);
-Node new(int value);
-void printTree(Node *head);
+Node* newNode(int value);
+void insert(Node *node, Node **head);
+void printTree(Node *node);
 
 //main function
 int main(void) {
-    Node *head;
+    Node *head = NULL;
     int i;
+    // random seed
+    srand(time(NULL));
 
-    for (i = 0; i < 10; i++) {
-        //
+    for (i = 0; i < 15; i++) {
+        printf("\n%d:\t", i + 1);
+        insert(newNode(rand() % 20 + 1), &head);
+        printTree(head);
     }
 }
 
 // creates and returns a new node
-Node new(int value) {
+Node* newNode(int value) {
     Node *node;
-
     node = (Node *) malloc(sizeof(Node));
 
-    node -> value = value;
+    node -> data = value;
     node -> left = NULL;
     node -> right = NULL;
 
@@ -36,36 +40,28 @@ Node new(int value) {
 }
 
 //inserts a value into a tree as a node
-void insert(int value, Node **head) {
-    // get a new node based on value
-    Node *node = new(value), *ptr = *head;
-    bool notInserted = TRUE;
+//inserts a value into a tree as a node
+void insert(Node *node, Node **head) {
+    Node *ptr = *head;
 
     // insert the node
-    if (*ptr == NULL) {                     // check if empty
+    if (ptr == NULL) {                    // check if empty
         *head = node;
     } else {
-        while (ptr -> value != value && notInserted) {
-            if (value < *head -> value) {   // if new value is less than current node
-                if (ptr -> left == NULL) {
-                    ptr -> left = node;
-                    notInserted = FALSE;
-                } else {
-                    ptr = ptr -> left;
-                }
-            } else {                        // if new value is greater than current node
-                if (ptr -> right == NULL) {
-                    ptr -> right = node;
-                    notInserted = FALSE;
-                } else {
-                    ptr = ptr -> right;
-                }
-            }
+        if ((node -> data) < (ptr -> data)) {
+            insert(node, &(ptr -> left));
+        } else if ((node -> data) > (ptr -> data)) {
+            insert(node, &(ptr -> right));
+        }
     }
 }
 
 
-//prints the tree
-void printTree(Node *head) {
-    printf("the tree");
+// prints the tree using in-order notation
+void printTree(Node *node) {
+    if (node != NULL) {
+        printTree(node -> left);
+        printf("%d ", node -> data);
+        printTree(node -> right);
+    }
 }
