@@ -12,6 +12,7 @@ typedef struct node {
 Node* newNode(int value);
 void insert(Node *node, Node **head);
 void printTree(Node *node);
+Node* find(int value, Node *node);
 
 //main function
 int main(void) {
@@ -20,10 +21,18 @@ int main(void) {
     // random seed
     srand(time(NULL));
 
+    printf("\nInserting Values:\n");
     for (i = 0; i < 15; i++) {
         printf("\n%d:\t", i + 1);
         insert(newNode(rand() % 20 + 1), &head);
         printTree(head);
+    }
+
+    printf("\n\nFinding Values:\n");
+    for (i = 0; i < 15; i++) {
+        int number = rand() % 20 + 1;
+        printf("\nFind %2d:\t", number);
+        printTree(find(number, head));
     }
 }
 
@@ -56,7 +65,6 @@ void insert(Node *node, Node **head) {
     }
 }
 
-
 // prints the tree using in-order notation
 void printTree(Node *node) {
     if (node != NULL) {
@@ -64,4 +72,19 @@ void printTree(Node *node) {
         printf("%d ", node -> data);
         printTree(node -> right);
     }
+}
+
+// returns node of value or NULL if it doesn't exist
+Node* find(int value, Node *node) {
+    if (node != NULL) {
+        if ((node -> data) == value) {
+            return node;
+        } else if ((node -> data) > value) {
+            return find(value, (node -> left));
+        } else {
+            return find(value, (node -> right));
+        }
+    }
+
+    return NULL;
 }
