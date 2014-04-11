@@ -124,6 +124,7 @@ void printMenu() {
     printf("\t2:\t Print preorder\n");
     printf("\t3:\t Print inorder\n");
     printf("\t4:\t Print postorder\n");
+    printf("\t5:\t Find node (displays in preorder)\n");
     printf("\t0:\t Quit\n");
     printf("\nChoose Task");
 }
@@ -134,7 +135,7 @@ void respond(int uInput, Node **head) {
         case 1:
             printf("New Value");
             insert(newNode(uInput = getInput()), head);
-            printf("%d inserted.\n", uInput);
+            printf("\n%d inserted\n", uInput);
             break;
         case 2:
             printTreePre(*head);
@@ -148,6 +149,10 @@ void respond(int uInput, Node **head) {
             printTreePost(*head);
             printf("\n");
             break;
+        case 5:
+            printf("Search Value");
+            printTreePre(find(uInput = getInput(), *head));
+            break;
         case 0:
             printf("Quitting...\n");
             break;
@@ -160,7 +165,6 @@ int getInput() {
     
     printf(" > ");
     scanf("%d", &uInput);
-    printf("\n");
 
     return uInput;
 }
