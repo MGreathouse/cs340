@@ -1,0 +1,36 @@
+2.01)   That the value of whatever is being passed is placed into a temporary variable and the original is unaffected by anything done to the temporary variable.
+
+2.02)   Everything is technically passed by value, but pointers that are copied are pointing to the origianl value so when passed they affect the value directly.
+
+2.03)   By passing the pointer to the arguement and chanigng the value that way.
+
+2.04)   void swap(int *a, int *b) {
+    int i;
+    i = *a;
+    a = b;
+    b = &i;
+}
+
+2.05)   void addThem(int a, int b, int *c) {
+    *c = a + b + *c;
+}
+
+2.06)   The array is the entirety of the contents of the char where the pointer points to the first element since it is an address. 
+
+2.07)   It is then pointed at the oldPtr string if it is a string or the character located there if it is not.
+
+2.08)   Math can be done to pointers, generally addition and subtraction since an address is simply a numerical value pointing to a spot somewhere in sequentially ordered memory
+
+2.09)   pointer arithmetic can cause core dump faults to occur since they try to go outside the memory allocated to the program.
+
+2.10)   how it is written, it all points to the same thing
+
+2.11)   it is different syntax for the same thing
+
+2.12)   It is a pointer that can point to any type of object and is useful because it allows a program to be more flexible since it can hold pointers to different types of data that might not be known at the time the program is written.
+
+2.13)   printf("%d\n", *vp);
+
+2.14)   keeping track of what type of object is being pointed at so that you can ensure the program can use it how you want it to
+
+2.15)   as the return type for functions or to indicate no value is being passed into a function
